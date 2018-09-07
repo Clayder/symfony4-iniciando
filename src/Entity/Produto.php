@@ -16,6 +16,20 @@ class Produto
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=100)
+     */
+    private $nome;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    private $preco;
+
     public function getId(): ?int
     {
         return $this->id;
