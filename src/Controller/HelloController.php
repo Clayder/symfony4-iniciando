@@ -10,13 +10,19 @@ namespace App\Controller;
 
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class HelloController
 {
+    /**
+     * @return Response
+     *
+     * @Route("hello-world")
+     */
     public function world()
     {
         return new Response(
-          "<html> Olá </html>"
+          "<html> Olá 2 </html>"
         );
     }
 }
