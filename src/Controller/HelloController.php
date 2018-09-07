@@ -60,6 +60,7 @@ class HelloController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return Response
      *
      * @Route("formulario")
