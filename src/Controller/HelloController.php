@@ -77,6 +77,10 @@ class HelloController extends Controller
 
         $form->handleRequest($request);
 
+        if($form->isSubmitted() && $form->isValid()){
+            return new Response("Formulário está OK");
+        }
+
         return $this->render("hello/formulario.html.twig", [
             'form' => $form->createView()
         ]);
