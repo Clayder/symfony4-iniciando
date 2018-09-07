@@ -33,6 +33,6 @@ class HelloController extends Controller
      * @Route("mostrar-mensagem")
      */
     public function mensagem(){
-        return $this->render("hello/mensagem.html.twig");
+        return $this->render("hello/mensagem.html.twig", ['mensagem' => "OI"]);
     }
 }
