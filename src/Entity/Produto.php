@@ -38,7 +38,7 @@ class Produto
     /**
      * @return string
      */
-    public function getNome(): string
+    public function getNome(): ?string
     {
         return $this->nome;
     }
@@ -56,7 +56,7 @@ class Produto
     /**
      * @return float
      */
-    public function getPreco(): float
+    public function getPreco(): ?float
     {
         return $this->preco;
     }

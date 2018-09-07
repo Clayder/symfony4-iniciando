@@ -10,7 +10,10 @@ namespace App\Controller;
 
 
 use App\Entity\Produto;
+use Doctrine\DBAL\Types\DecimalType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -53,6 +56,26 @@ class HelloController extends Controller
         $em->flush();
 
         return new Response("O produto ".$produto->getId(). " foi criado");
+    }
+
+    /**
+     * @return Response
+     *
+     * @Route("formulario")
+     */
+    public function formulario()
+    {
+        $produto = new Produto();
+
+        $form = $this->createFormBuilder($produto)
+            ->add('nome', TextType::class)
+            ->add('preco', TextType::class)
+            ->add('enviar', SubmitType::class, ['label' => 'Salvar'])
+            ->getForm();
+
+        return $this->render("hello/formulario.html.twig", [
+            'form' => $form->createView()
+        ]);
     }
 
 }
