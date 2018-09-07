@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Produto;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,4 +36,23 @@ class HelloController extends Controller
     public function mensagem(){
         return $this->render("hello/mensagem.html.twig", ['mensagem' => "OI"]);
     }
+
+    /**
+     * @return Response
+     *
+     * @Route("produto")
+     */
+    public function produto(){
+        $em = $this->getDoctrine()->getManager();
+
+        $produto = new Produto();
+        $produto->setNome("Livro");
+        $produto->setPreco(13.4);
+
+        $em->persist($produto);
+        $em->flush();
+
+        return new Response("O produto ".$produto->getId(). " foi criado");
+    }
+
 }

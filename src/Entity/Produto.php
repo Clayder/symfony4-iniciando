@@ -34,4 +34,42 @@ class Produto
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getNome(): string
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     * @return Produto
+     */
+    public function setNome(string $nome): Produto
+    {
+        $this->nome = $nome;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPreco(): float
+    {
+        return $this->preco;
+    }
+
+    /**
+     * @param float $preco
+     * @return Produto
+     */
+    public function setPreco(float $preco): Produto
+    {
+        $this->preco = $preco;
+        return $this;
+    }
+
+
 }
