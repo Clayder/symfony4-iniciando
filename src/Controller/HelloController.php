@@ -26,4 +26,13 @@ class HelloController extends Controller
           "<html> Olá 2 </html>"
         );
     }
+
+    /**
+     * @return Response
+     *
+     * @Route("mostrar-mensagem")
+     */
+    public function mensagem(){
+        return $this->render("hello/mensagem.html.twig");
+    }
 }
