@@ -14,6 +14,7 @@ use Doctrine\DBAL\Types\DecimalType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -63,7 +64,7 @@ class HelloController extends Controller
      *
      * @Route("formulario")
      */
-    public function formulario()
+    public function formulario(Request $request)
     {
         $produto = new Produto();
 
@@ -72,6 +73,8 @@ class HelloController extends Controller
             ->add('preco', TextType::class)
             ->add('enviar', SubmitType::class, ['label' => 'Salvar'])
             ->getForm();
+
+        $form->handleRequest($request);
 
         return $this->render("hello/formulario.html.twig", [
             'form' => $form->createView()
