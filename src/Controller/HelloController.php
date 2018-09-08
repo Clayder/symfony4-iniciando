@@ -44,7 +44,7 @@ class HelloController extends Controller
     /**
      * @return Response
      *
-     * @Route("produto")
+     * @Route("produto-teste")
      */
     public function produto(){
         $em = $this->getDoctrine()->getManager();
