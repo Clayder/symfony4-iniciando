@@ -32,6 +32,14 @@ class ProdutoController extends AbstractController
         $produto = new Produto();
         $form = $this->createForm(ProdutoType::class, $produto);
         $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($produto);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->set('success', "Produto foi salvo com sucesso!");
+            return $this->redirectToRoute('produto');
+        }
         return $this->render("produto/create.html.twig",[
             'form' => $form->createView()
         ]);
