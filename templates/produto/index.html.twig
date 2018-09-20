@@ -12,7 +12,7 @@
     <hr>
     <div class="row">
         <div class="col-md-12">
-            <a href="" class="btn btn-primary btn-lg pull-right">
+            <a href="{{ path("cadastrar-produto") }}" class="btn btn-primary btn-lg pull-right">
                 Adicionar Produto
             </a>
         </div>
@@ -34,7 +34,7 @@
                     <td>{{ produto.preco }}</td>
                     <td>
                         <a href="" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></a>
-                        <a href="" class="btn btn-sm btn-success"><i class="fa fa-pencil-alt"></i></a>
+                        <a href="{{ path('editar-produto', {"id": produto.id}) }}" class="btn btn-sm btn-success"><i class="fa fa-pencil-alt"></i></a>
                         <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
