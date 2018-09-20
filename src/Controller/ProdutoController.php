@@ -44,4 +44,30 @@ class ProdutoController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @Route("produto/editar/{id}", name="editar-produto")
+     */
+    public function updated(Request $request, $id){
+        $em = $this->getDoctrine()->getManager();
+        $produto = $em->getRepository(Produto::class)->find($id);
+        $form = $this->createForm(ProdutoType::class, $produto);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($produto);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->set('success', "Produto foi atualizado com sucesso!");
+            return $this->redirectToRoute('produto');
+        }
+        return $this->render("produto/updated.html.twig", [
+            'produto' => $produto,
+            'form' => $form->createView()
+        ]);
+    }
 }
